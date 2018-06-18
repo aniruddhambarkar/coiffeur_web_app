@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPage } from '../pages/login/login';
 import { APP_ROUTES } from './app.routing';
@@ -8,19 +8,20 @@ import { APP_ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { AppRoutingModule } from './/app-routing.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CdkTableModule} from '@angular/cdk/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CdkTableModule } from '@angular/cdk/table';
 import { HttpModule } from '@angular/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DashboardPage} from '../pages/dashboard/dashboard';
-import {Ng2TableModule} from 'ng2-table'
-    
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { Ng2TableModule } from 'ng2-table'
+import { RegisterPage } from '../pages/register/register'
+
 
 const appRoutes: Routes = [
   { path: '', component: LoginPage },
-  { path: 'dashboard', component: DashboardPage }
+  { path: 'dashboard', component: DashboardPage },
+  { path: 'register', component: RegisterPage }
 ];
-
 
 
 @NgModule({
@@ -29,8 +30,8 @@ const appRoutes: Routes = [
     LoginPage,
     LoginComponentComponent,
     DashboardPage,
-    
-    
+    RegisterPage
+
   ],
   imports: [
     BrowserModule,
@@ -40,18 +41,18 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true} // <-- debugging purposes only
-    ),    
-    AppRoutingModule,    
-    
-    FormsModule ,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+    AppRoutingModule,
+
+    FormsModule,
     ReactiveFormsModule,
-NgbModule.forRoot(),
+    NgbModule.forRoot(),
     BrowserAnimationsModule
   ],
   bootstrap: [AppComponent],
-  providers: [],  
-  entryComponents: [    
+  providers: [],
+  entryComponents: [
     LoginPage
   ]
 })
@@ -59,9 +60,14 @@ NgbModule.forRoot(),
 
 @NgModule({
   exports: [
-    
+
   ]
 })
 
 
-export class AppModule { }
+export class AppModule { 
+
+
+
+  
+}

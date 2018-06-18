@@ -1,11 +1,30 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<div style="text-align:center">
-   
-   <router-outlet></router-outlet>
-  
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+<div class="wrapper">
+    <nav class="toc py-3 sidebar">
+        <div class="" [class.current]="isActive(['/dashboard'], true)">
+            <a class="" routerLink="/dashboard">Home</a>
+        </div>
+
+        <div class="" [class.current]="isActive(['/'], true)">
+            <a class="" routerLink="/dashboard">License</a>
+        </div>
+
+        <div class="toc-item" [class.current]="isActive(['/components'], false)">
+            <a class="toc-link" [routerLink]="['#']">Components</a>
+            <ul class="nav flex-column">
+                <li *ngFor="let component of components" [class.current]="isActive(['/components', component.toLowerCase(), activeTab])">
+                    <a class="toc-link" [routerLink]="['/components', component.toLowerCase(), activeTab]">{{ component }}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="" style="text-align:center">
+
+        <router-outlet></router-outlet>
+
+    </div>
 </div>
-
-
-
-

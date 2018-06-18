@@ -18,8 +18,8 @@ import { NG_TABLE_DIRECTIVES } from 'ng2-table'
 
 @Component({
     selector: 'app-root',
-    templateUrl: 'dashboard.html',
-    styleUrls: ['dashboard.scss'],
+    templateUrl: 'register.html',
+    styleUrls: ['register.scss'],
     providers: [MovieService, WebAccess]
 })
 

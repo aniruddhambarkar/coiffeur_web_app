@@ -1,0 +1,27 @@
+
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}  
+
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #007788;
+    padding: 16px;
+    color: white;
+    font-size: 18px;
+    text-align: left;
+}
+
+.sidebar a{
+    color: white;
+}
+
+.sidebar .current {
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #1199AA;
+}

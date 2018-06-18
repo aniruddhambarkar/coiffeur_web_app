@@ -174,6 +174,8 @@ export class DashboardPage {
 
     public addNew(){
         console.log("adding new");
+        this.router.navigateByUrl('/register');
+
     }
 
 }
