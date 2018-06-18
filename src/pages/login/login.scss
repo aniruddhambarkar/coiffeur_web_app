@@ -1,0 +1,27 @@
+page-home {
+
+}
+.page-main-title{
+    font-size: 30px;
+    margin-top: 50px;
+    font-weight: 300;
+}
+.margin_30{
+    margin-top: 30px;
+}
+
+.page-sub-title{
+    font-size: 25px;
+    margin-top: 20px;
+    font-weight: 200;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.example-container > * {
+    width: 60%;
+
+}

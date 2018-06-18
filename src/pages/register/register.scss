@@ -1,0 +1,57 @@
+page-home {
+
+}
+.page-main-title{
+    font-size: 30px;
+    margin-top: 50px;
+    font-weight: 300;
+}
+.margin_30{
+    margin-top: 30px;
+}
+
+.margin_10{
+    margin-top: 10px;
+}
+
+.page-sub-title{
+    font-size: 25px;
+    margin-top: 20px;
+    font-weight: 200;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.example-container > * {
+    width: 60%;
+
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}  
+
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #007788;
+    padding: 16px;
+    color: white;
+    font-size: 18px;
+    text-align: left;
+}
+
+.sidebar a{
+    color: white;
+}
+
+.sidebar .current {
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #1199AA;
+}

@@ -1,0 +1,85 @@
+<div class="wrapper">
+
+    <nav class="toc py-3 sidebar">
+        <div class="" [class.current]="isActive(['/dashboard'], true)">
+            <a class="" routerLink="/dashboard">Home</a>
+        </div>
+
+        <div class="" [class.current]="isActive(['/'], true)">
+            <a class="" routerLink="/dashboard">License</a>
+        </div>
+
+        <div class="toc-item" [class.current]="isActive(['/components'], false)">
+            <a class="toc-link" [routerLink]="['#']">Components</a>
+            <ul class="nav flex-column">
+                <li *ngFor="let component of components" [class.current]="isActive(['/components', component.toLowerCase(), activeTab])">
+                    <a class="toc-link" [routerLink]="['/components', component.toLowerCase(), activeTab]">{{ component }}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
+
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
+                    <label class="page-main-title">Wel-Come Admin</label>
+                </div>
+
+
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
+                    <!--<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                    <i class="glyphicon glyphicon-align-left"></i>
+                    Toggle Sidebar
+                </button> -->
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12 margin_10">
+                        
+                            <input *ngIf="config.filtering" placeholder="Filter" [ngTableFiltering]="config.filtering" (tableChanged)="onChangeTable(config)"
+                            />
+                            <i class="fas fa-user-plus" (click)="addNew()"></i>
+                           
+                        
+                    </div>
+
+                    <ng-table [config]="config.sorting" (tableChanged)="onChangeTable(config)" [rows]="rows" [columns]="columns">
+                    </ng-table>
+
+                </div>
+
+            </div>
+
+            <p class="margin_30">
+                <ngb-alert *ngIf="!staticAlertClosed" type="danger" (close)="staticAlertClosed = true">{{alertMessage}}</ngb-alert>
+            </p>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!--<form-group-component>
+    <form class="example-form" (ngSubmit)="performLogin()">
+-->
+
+<!--<form class="example-form" (ngSubmit)="performLogin()">
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+
+    </div>
+
+    <div padding>
+        <button mat-raised-button color="primary" type="submit" block id="btnLogin">Sign In</button>
+        
+    </div>
+</form>-->
+<!--  </form-group-component>-->
