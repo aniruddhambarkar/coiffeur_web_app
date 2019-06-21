@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,PipeTransform} from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -15,6 +15,7 @@ import { Ng2TableModule } from 'ng2-table'
 import { NgTableComponent } from 'ng2-table';
 import { NG_TABLE_DIRECTIVES } from 'ng2-table'
 import { TableData } from './table-data';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'app-root',
@@ -56,6 +57,7 @@ export class DashboardPage {
     };
 
     private data: Array<any> = TableData;
+    private fullData: Array<any> = TableData;
 
 
     constructor(sanitizer: DomSanitizer,
@@ -86,7 +88,7 @@ export class DashboardPage {
 
 
     public ngOnInit(): void {
-        this.onChangeTable(this.config);
+        //this.onChangeTable(this.config);
         this.getUsers();
     }
 
@@ -100,82 +102,31 @@ export class DashboardPage {
                 console.log(res);
                 
                 this.data = res;
-                this.onChangeTable(this.config);
-
-
+                this.fullData =res;
             },
             err => {
                 console.log(err);
             })
     }
-
-    public changePage(page: any, data: Array<any> = this.data): Array<any> {
-        console.log(page);
-        let start = (page.page - 1) * page.itemsPerPage;
-        let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
-        return data.slice(start, end);
-    }
-
-    public changeSort(data: any, config: any): any {
-        if (!config.sorting) {
-            return data;
-        }
-
-        let columns = this.config.sorting.columns || [];
-        let columnName: string = void 0;
-        let sort: string = void 0;
-
-        for (let i = 0; i < columns.length; i++) {
-            if (columns[i].sort !== '') {
-                columnName = columns[i].name;
-                sort = columns[i].sort;
-            }
-        }
-
-        if (!columnName) {
-            return data;
-        }
-
-        // simple sorting
-        return data.sort((previous: any, current: any) => {
-            if (previous[columnName] > current[columnName]) {
-                return sort === 'desc' ? -1 : 1;
-            } else if (previous[columnName] < current[columnName]) {
-                return sort === 'asc' ? -1 : 1;
-            }
-            return 0;
-        });
-    }
-
-    public changeFilter(data: any, config: any): any {
-        if (!config.filtering) {
-            return data;
-        }
-
-        let filteredData: Array<any> = data.filter((item: any) =>
-            item[config.filtering.columnName].match(this.config.filtering.filterString));
-
-        return filteredData;
-    }
-
-    public onChangeTable(config: any, page: any = { page: this.page, itemsPerPage: this.itemsPerPage }): any {
-        if (config.filtering) {
-            Object.assign(this.config.filtering, config.filtering);
-        }
-        if (config.sorting) {
-            Object.assign(this.config.sorting, config.sorting);
-        }
-
-        let filteredData = this.changeFilter(this.data, this.config);
-        let sortedData = this.changeSort(filteredData, this.config);
-        this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
-        this.length = sortedData.length;
-    }
-
+    
     public addNew(){
         console.log("adding new");
         this.router.navigateByUrl('/register');
 
     }
+
+     public search(text: String) {
+        return this.fullData.filter(userInfo => {
+          const term = text.toLowerCase();
+          return userInfo.name.toLowerCase().includes(term)
+              || userInfo.shopName.toLowerCase().includes(term);
+        });
+      }
+
+      public onSearchChange(text:String){
+          console.log("value "+text);
+          this.data = this.search(text);
+          console.log(this.data);
+      }
 
 }

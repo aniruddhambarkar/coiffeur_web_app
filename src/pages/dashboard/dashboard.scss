@@ -12,6 +12,7 @@ page-home {
 
 .margin_10{
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .page-sub-title{
@@ -54,4 +55,17 @@ page-home {
     padding-top: 5px;
     padding-bottom: 5px;
     background: #1199AA;
+}
+
+.btn_blue{
+    background: #007788;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #ececec;
+    color: white;
+    border-radius: 4px;
+}
+
+.table-striped tbody tr:nth-of-type(odd){
+    background: #22bbcc;
 }

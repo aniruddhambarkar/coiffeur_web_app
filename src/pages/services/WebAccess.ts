@@ -11,9 +11,10 @@ export class WebAccess{
     constructor (private http: Http
   ) {}
     
-   serverURL : string = "http://localhost:8080/";
+  
+   serverURL : string = "http://localhost:8080/test/";
    public login: string =this.serverURL+"/adminLogin?";
-   public adminlogin: string =this.serverURL+"/adminLogin?";
+   public adminlogin: string =this.serverURL+"adminLogin?";
    public getAllUsers : string = this.serverURL+"getAllUsers";
   
    getUser() {

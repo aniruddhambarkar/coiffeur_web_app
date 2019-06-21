@@ -19,43 +19,58 @@
         </div>
     </nav>-->
 
-    <div class="container">
-        <div class="row text-center">
+<div class="container">
+    <div class="row">
 
-            <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
-
-                <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
-                    <label class="page-main-title">Wel-Come Admin</label>
-                </div>
-
-
-                <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
-                    <!--<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                    <i class="glyphicon glyphicon-align-left"></i>
-                    Toggle Sidebar
-                </button> -->
-                    <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12 margin_10">
-                        
-                            <input *ngIf="config.filtering" placeholder="Filter" [ngTableFiltering]="config.filtering" (tableChanged)="onChangeTable(config)"
-                            />
-                            <i class="fas fa-user-plus" (click)="addNew()"></i>
-                           
-                        
-                    </div>
-
-                    <ng-table [config]="config.sorting" (tableChanged)="onChangeTable(config)" [rows]="rows" [columns]="columns">
-                    </ng-table>
-
-                </div>
-
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
+            <label class="page-main-title">Wel-Come Admin</label>
+        </div>
+        <div class="col-12 col-md-12 col-xl-12 col-xs-12 p-0">
+            <input placeholder="Search" class="col-lg-6 col-xs-12 col-md-6 col-xl-6 float-left margin_10"  
+            (input)="onSearchChange($event.target.value)"/>
+            <div   (click)="addNew()" class="col-lg-1 col-sm-3 col-md-3 col-xs-12 d-inline btn_blue">
+            
+                <label style="margin-top: 10px">Add New </label>                
+                <i class="fas fa-user-plus" style="margin: 5px"></i>
+                
             </div>
+        </div>
 
-            <p class="margin_30">
-                <ngb-alert *ngIf="!staticAlertClosed" type="danger" (close)="staticAlertClosed = true">{{alertMessage}}</ngb-alert>
-            </p>
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <table class="table table-striped col-lg-12 col-sm-12 col-xl-12 col-xs-12 ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Shop Name</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">License</th>
 
-
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of data; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+            
+                        <td>{{ user.name}}</td>
+                        <td>{{ user.shopName}}</td>
+                        <td>{{ user.mobile}}</td>
+                        <td>{{ user.shopName}}</td>
+                        <td>{{ user.licenseInfo.from}} to  {{ user.licenseInfo.to}} </td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
+
     </div>
-!<!--</div> -->
+
+    <p class="margin_30">
+        <ngb-alert *ngIf="!staticAlertClosed" type="danger" (close)="staticAlertClosed = true">{{alertMessage}}</ngb-alert>
+    </p>
+
+
+
+
+</div>
